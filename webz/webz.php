@@ -33,9 +33,9 @@ class WebzServer extends HTTPServer
     {
         $uri = $request->uri;	
         
-		$ini = parse_ini_file("webz.ini");
-		$webz_www = trim($ini["webz_www"]);
-        $doc_root = $webz_www;
+	$ini = parse_ini_file("webz.ini");
+	$webz_www = trim($ini["webz_www"]);
+        $doc_root = ($webz_www=='[default]')?realpath('www'):$webz_www;
         
         if (preg_match('#/$#', $uri))
         {          
